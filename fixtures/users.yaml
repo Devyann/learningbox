@@ -1,0 +1,9 @@
+App\Entity\User:
+    user1:
+        email: 'yannkhe@gmail.com'
+        firstName: 'Yannick'
+        password: <hashPassword('tata')>
+    user{2..10}:
+        email: <email()>
+        firstName: <firstName()>
+        password: <hashPassword('toto')>

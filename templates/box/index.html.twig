@@ -3,18 +3,39 @@
 {% block title %}Hello BoxController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/yannick/projects/learningbox/src/Controller/BoxController.php'|file_link(0) }}">src/Controller/BoxController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/yannick/projects/learningbox/templates/box/index.html.twig'|file_link(0) }}">templates/box/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-1">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">
+                    Learning Box</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapsable" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-collapsable">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
+                    </li>
+                </ul>
+                <ul>
+                    {% if (app.user) %}
+                        <li>
+                            <a class="nav-link text-black-50" href="#">Compte</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-dark" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="nav-link text-black-50" href="{{ path('app_login') }}">S'identifier</a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-dark">Créer un compte</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 {% endblock %}
